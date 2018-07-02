@@ -2,14 +2,15 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 var UserdataSchema = new Schema(
-  {
-    name:      { type: String },
-    phone:     { type: String, unique: true },
-    email:     { type: String, unique: true },
+  { 
+    username:   { type: String,unique: true,required:true},
+    password:   { type: String,unique: true,required:true},
+    phone:     { type: String },
+    email:     { type: String},
     create_at: { type: Date, default: Date.now },
     update_at: { type: Date, default: Date.now }
   },{
-    collection: 'Userdata'
+    versionKey: false
   }
 )
 var Userdata=mongoose.model('Userdata', UserdataSchema,'Userdata' );
