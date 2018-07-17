@@ -1,7 +1,6 @@
-var MongoClient = require('mongodb').MongoClient
+var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var mongoose = require('mongoose')
 var state = {
   db: null,
 }
