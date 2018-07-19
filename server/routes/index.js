@@ -12,9 +12,9 @@ module.exports = function(app) {
         return next(err);
       }
       if (!user) {
-        return res.render('signup', { message: info.message });
+        return res.render('index', { message: info.message });
       }
-      return res.redirect('/signin');
+      return res.redirect('/');
     })(req, res, next);
   });
   app.post('/signin', function(req, res, next) {

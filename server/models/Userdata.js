@@ -7,6 +7,9 @@ var UserdataSchema = new Schema(
     password:   { type: String,unique: true,required:true},
     phone:     { type: String },
     email:     { type: String},
+    myproduct:     { type: String},
+    favorite:     { type: String},
+    shoppingCart:     { type: String},
     create_at: { type: Date, default: Date.now },
     update_at: { type: Date, default: Date.now }
   },{

@@ -8,9 +8,9 @@ var Schema = mongoose.Schema;
 
 let userController = {
   index: function (req, res) {
-    Userdata.findAll()
+    Userdata.find()
       .then(function (tasks) {
-        res.render('index', {"title": tasks});
+        res.render('index', {"title": tasks,message: ''});
       });
   },
   indexApi: function (req, res) {
