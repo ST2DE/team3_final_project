@@ -10,7 +10,7 @@ let userController = {
   index: function (req, res) {
     Userdata.find()
       .then(function (tasks) {
-        res.render('index', {"title": tasks,message: ''});
+        res.json(tasks);
       });
   },
   indexApi: function (req, res) {
@@ -33,8 +33,7 @@ let userController = {
       return res.status(200).send('some text');
     });
   },signup: function(req, res) {
-    require('../controllers/passport.js')(passport);
-    res.render('index', { message: '',"title": 'tasks'});
+    res.render('index', {massage: 'tasks'});
   }
 };
 module.exports = userController;

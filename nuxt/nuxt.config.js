@@ -38,7 +38,7 @@ module.exports = {
     /*
      ** Run ESLint on save
      */
-    vendor: ['axios', 'vuetify'],
+    // vendor: ['axios', 'vuetify'],
     extend(config, {isDev, isClient}) {
   
     }
@@ -46,7 +46,7 @@ module.exports = {
   css: [
     // 项目中的 Sass 文件
     {
-      src: '~assets/app.styl'
+      src: '~/assets/app.styl'
     } // 指定 scss 而非 sass
   ],
 

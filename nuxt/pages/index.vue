@@ -25,6 +25,10 @@ export default {
 </script>
 
 <style>
+a,a:hover,a:focus{
+  text-decoration: none;
+  color: black;
+}
 .container {
   min-height: 100vh;
   width: 100%;
