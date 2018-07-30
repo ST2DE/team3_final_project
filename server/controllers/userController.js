@@ -32,7 +32,8 @@ let userController = {
       if (err) return res.status(500).send(err);
       return res.status(200).send('some text');
     });
-  },signup: function(req, res) {
+  },
+  signup: function(req, res) {
     res.render('index', {massage: 'tasks'});
   }
 };

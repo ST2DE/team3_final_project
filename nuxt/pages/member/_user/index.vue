@@ -1,59 +1,54 @@
 <template>
-<div  >
+<div >
 
-  <v-card height="100vh">
-      <v-container grid-list-md text-xs-center>
+  <v-container  text-xs-center>
     <v-layout row wrap>
-      <v-flex xs3>
-
-    <v-navigation-drawer
-      permanent
-      class="pa-0"
-    >
-      <v-toolbar flat class="transparent">
-        <v-list class="pa-0">
-          <v-list-tile avatar>
-           
-
-            <v-list-tile-content>
-              <v-list-tile-title>  <h1>{{$route.params.user}} 歡迎～</h1>
-              </v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-toolbar>
-
-      <v-list class="pt-0" dense>
-        <v-divider></v-divider>
-
-        <v-list-tile
-          v-for="item in items"
-          :key="item.title"
-          @click="linkTo (item.url) "
-        >
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-
-          <v-list-tile-content>
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-          </v-list-tile-content>
+      <v-flex xs2>
+<v-navigation-drawer 
+  height="100vh" 
+  permanent
+  class="black "
+  dark
+>
+    <v-toolbar flat>
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-title class="title">
+     {{$route.params.user}} 歡迎
+          </v-list-tile-title>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
-      </v-flex>
-      <v-flex xs9>
-        <v-card  color="primary" height="100%">
-          <v-card-text class="px-0">4</v-card-text>
-              <Manage/>
+    </v-toolbar>
 
+    <v-divider></v-divider>
+
+    <v-list dense class="pt-0">
+      <v-list-tile
+        v-for="item in items"
+        :key="item.title"
+        @click="linkTo(item.url)"
+      >
+        <v-list-tile-action>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-tile-action>
+
+        <v-list-tile-content>
+          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
+
+    <!-- 下面開始是board -->
+      </v-flex>
+      <v-flex xs10>
+        <v-card  color="primary" height="100%">
+        <MyProduct v-if="nowPage==='my'"/>
+        <AddProduct v-if="nowPage==='add'"/>
         </v-card>
       </v-flex>
     </v-layout>
   </v-container>
-
-  </v-card>
-
 
 
 </div>
@@ -62,30 +57,36 @@
 import axios from 'axios'
 import Card from '~/components/Card.vue'
 import { mapState,mapActions,mapGetters } from 'vuex'
-
-  import Manage from '~/components/Manage.vue'
+  import MyProduct from '~/components/MyProduct.vue'
+  import AddProduct from '~/components/AddProduct.vue'
 
   export default{
     
     components:{
-Manage
+AddProduct,
+MyProduct
     },
     middleware:'notAuthenticated',
     data () {
       return {      
         items: [
-        { title: '商品管理', icon: 'dashboard',url:'/member/'+this.$route.params.user+'/manage' },
-        { title: '帳號管理', icon: 'account_box',url:`/member/${this.$route.params.user}/manage` },
+        { title: '我的商品', icon: 'dashboard',url:'my' },
+        { title: '新增商品', icon: 'dashboard',url:'add' },
+        { title: '帳號管理', icon: 'account_box',url:'account' },
         { title: 'Admin', icon: 'gavel',url:`/member/${this.$route.params.user}/manage` }
       ],
+      nowPage:'my',
+      
+
       }
     },
     computed:{
-    
+   
     },
     methods:{
    linkTo (value) {
           // this.$router.push(value);
+          this.nowPage=value
     }
     }
   }

@@ -47,7 +47,7 @@ import Cookie from 'js-cookie'
     components:{
         Card
     },
-    middleware:'notAuthenticated',
+    // middleware:'notAuthenticated',
     data () {
       return {
         data:{
@@ -64,9 +64,14 @@ import Cookie from 'js-cookie'
         this.$store.commit('INPUT_LOGIN', this.data)
         this.$store.dispatch('login')
         setTimeout(() =>{
-          if(this.$store.state.user){
-          this.$router.push(`member/${this.$store.state.user.username}`);
+        if(this.$store.state.user){
+          // this.$router.push(`member`);
+          this.$router.push({ name: '/member' })
+
           console.log('登入成功')
+        //  this.$router.push({ path: `/member` }) // -> /user/123
+          //  return  redirect(`member/${this.$store.state.user.username}`)
+
         }else{
           this.message='帳號或密碼錯誤'        }
         },1000)

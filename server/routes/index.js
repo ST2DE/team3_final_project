@@ -13,6 +13,7 @@ module.exports = function(app) {
   app.get('/', userController.index);
   app.post('/', userController.register);
   app.post('/addNew', productController.addProduct);
+  // app.post('/update', productController.updateProduct);
 
   app.post('/signup', function(req, res, next) {
     require('../controllers/passport.js')(passport)

@@ -9,9 +9,8 @@ var db = require('./models');
 var app = express();
 app.use('/public', express.static(__dirname + '/public'));
 // app.use(require('./controllers/passport.js')(passport));
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.urlencoded({limit: '1000mb', extended: true}));
+
 app.use(bodyParser.json());
 
 app.use(cookieParser());
